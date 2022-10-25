@@ -1,10 +1,10 @@
 import React from 'react';
+import { Form, Link } from 'react-router-dom';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     return (
-        <div>
-            <h2>log in</h2>
-        </div>
+       
     );
 };
 

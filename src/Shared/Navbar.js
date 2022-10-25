@@ -65,7 +65,7 @@ const Navbar = () => {
                         <label className="label cursor-pointer">
                             <span className='mr-2' style={{ color: darkMode ? 'gray' : 'yellow' }}>Light</span>
                             <input type="checkbox" onChange={() => setDarkMode(!darkMode)} className="toggle toggle-secondary" />
-                            <span className='ml-2' style={{ color: darkMode ? 'white' : '#c96dfd' }} >Dark</span>
+                            <span className='ml-2' style={{ color: darkMode ? 'Black' : '#c96dfd' }} >Dark</span>
                         </label>
                     </div>
                 </div>
