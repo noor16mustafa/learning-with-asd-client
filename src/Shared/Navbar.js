@@ -60,7 +60,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className='navbar-end'>
+                <div className='navbar-end hidden lg:flex'>
                     <div className="form-control">
                         <label className="label cursor-pointer">
                             <span className='mr-2' style={{ color: darkMode ? 'gray' : 'yellow' }}>Light</span>
