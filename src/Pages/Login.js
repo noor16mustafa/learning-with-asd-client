@@ -4,10 +4,41 @@ import { FaGithub, FaGoogle, FaUserCircle } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn } = useContext(AuthContext);
+    const { signIn, providerSignIn } = useContext(AuthContext);
+
+    const githubProvider = new GithubAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
+
+    const handleGithubSignIn = () => {
+        providerSignIn(githubProvider)
+            .then(result => {
+                const user = result.user;
+                setError('');
+                console.log(user);
+            })
+            .catch(e => {
+                console.log(e);
+                setError('');
+                setError(e.message);
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        providerSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(e => {
+                console.log(e);
+                setError(e.message);
+            })
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -21,6 +52,7 @@ const Login = () => {
                 console.log(user);
                 setError('');
                 form.reset();
+                toast.success('Thanks for your access')
             })
             .catch(e => {
                 setError(e.message)
@@ -57,8 +89,8 @@ const Login = () => {
                     </div>
                 </Form>
                 <div className='flex mt-3 align-items-center'>
-                    <button className="btn btn-outline  mr-4"><FaGithub className='h-7 w-7'></FaGithub></button>
-                    <button className="btn btn-outline btn-primary"><FaGoogle className='h-7 w-7'></FaGoogle></button>
+                    <button onClick={handleGithubSignIn} className="btn btn-outline  mr-4"><FaGithub className='h-7 w-7'></FaGithub></button>
+                    <button onClick={handleGoogleSignIn} className="btn btn-outline btn-primary"><FaGoogle className='h-7 w-7'></FaGoogle></button>
 
 
                 </div>
