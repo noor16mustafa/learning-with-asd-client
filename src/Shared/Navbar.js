@@ -28,6 +28,7 @@ const Navbar = () => {
                             <li><Link to='/blog'>Blog</Link></li>
                             <li><Link to='/faq'>FAQ</Link></li>
                             <li><Link to='/login'>LogIn</Link></li>
+                            <li><Link to='/register'>Sign Up</Link></li>
                             <li><Link to='/logout'>LogOut</Link></li>
                             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                 <div className="w-10 rounded-full">
@@ -51,6 +52,7 @@ const Navbar = () => {
                         <li><Link to='/blog'>Blog</Link></li>
                         <li><Link to='/faq'>FAQ</Link></li>
                         <li><Link to='/login'>LogIn</Link></li>
+                        <li><Link to='/register'>Sign Up</Link></li>
                         <li><Link to='/logout'>LogOut</Link></li>
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">

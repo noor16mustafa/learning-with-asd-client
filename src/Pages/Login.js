@@ -23,7 +23,7 @@ const Login = () => {
                         </label>
                         <input type="password" name='password' placeholder="Password" className="input input-bordered w-full max-w-xs" required />
 
-                        <p className='text-xl text-green-900 pt-3'>New to this side? Please<button className="btn btn-link"><Link to='/register'>Register</Link></button></p>
+                        <p className='text-xl text-green-900 pt-3'>New to this side? Please<button className="btn btn-link"><Link to='/register'>Sign Up</Link></button></p>
                         <button className="btn btn-primary">Log In</button>
 
                     </div>
