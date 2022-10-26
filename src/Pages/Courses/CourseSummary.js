@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const CourseSummary = ({ courseSum }) => {
@@ -16,7 +17,8 @@ const CourseSummary = ({ courseSum }) => {
 
 
                     <div className="card-actions justify-end">
-                        <button className="btn btn-outline btn-primary">Learn more!</button>
+                        <button className="btn btn-outline btn-primary">
+                            <Link to={`/course/${id}`} >Learn more!</Link></button>
                     </div>
                 </div>
             </div>

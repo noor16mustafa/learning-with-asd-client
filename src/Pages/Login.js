@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Link } from 'react-router-dom';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaGithub, FaGoogle, FaUserCircle } from 'react-icons/fa';
 
 const Login = () => {
     return (
@@ -10,7 +10,8 @@ const Login = () => {
 
             <div className='w-100% mr-0  lg:w-1/4 lg:mr-40 flex-auto absolute text-center   p-8  rounded-lg shadow-lg  bg-blue-400' style={{ height: "450px" }}>
                 <Form>
-                    <h1 className='text-3xl text-bold text-yellow-900 text-center'>Please LogIn</h1>
+
+                    <div ><FaUserCircle className=' m-auto text-yellow-700' style={{ height: "60px", width: "60px" }}></FaUserCircle></div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Your Email</span>
@@ -29,7 +30,7 @@ const Login = () => {
                     </div>
                 </Form>
                 <div className='flex mt-3 align-items-center'>
-                    <button className="btn btn-outline btn-warning mr-4"><FaGithub className='h-7 w-7'></FaGithub></button>
+                    <button className="btn btn-outline  mr-4"><FaGithub className='h-7 w-7'></FaGithub></button>
                     <button className="btn btn-outline btn-primary"><FaGoogle className='h-7 w-7'></FaGoogle></button>
 
 
