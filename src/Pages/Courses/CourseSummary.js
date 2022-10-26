@@ -1,21 +1,25 @@
 import React from 'react';
 
-const CourseSummary = ({ course }) => {
-    const { id, name, img, details, } = course;
+
+const CourseSummary = ({ courseSum }) => {
+    const { id, name, img, enrolled } = courseSum;
     return (
-        <div className='flex m-8 pb-5'>
-            <div className='flex-auto w-1/3 '>
-                <div>
-                    <button className="btn btn-secondary btn-block sm:btn-block md:btn-md lg:btn-lg">{name}</button>
+
+        <div>
+            <div className="card w-auto lg:w-96 glass">
+                <figure><img className='w-full' src={img} alt="" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title text-3xl font-bold text-purple-800">{name}</h2>
+
+
+                    <p className='p-2 font-bold text-2xl'>Enrolled: <span className='text-yellow-600'>{enrolled}</span></p>
+
+
+                    <div className="card-actions justify-end">
+                        <button className="btn btn-outline btn-primary">Learn more!</button>
+                    </div>
                 </div>
             </div>
-            <div className='flex-auto w-2/3 '>
-                <div className=' '>
-                    <h2>grid</h2>
-
-                </div>
-            </div>
-
         </div>
 
     );
