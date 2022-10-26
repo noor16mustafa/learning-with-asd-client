@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGoogle, FaUserCircle } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
@@ -9,7 +9,11 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const { signIn, providerSignIn } = useContext(AuthContext);
+    const { signIn, providerSignIn, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const githubProvider = new GithubAuthProvider();
     const googleProvider = new GoogleAuthProvider();
@@ -20,11 +24,15 @@ const Login = () => {
                 const user = result.user;
                 setError('');
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(e => {
                 console.log(e);
                 setError('');
                 setError(e.message);
+            })
+            .finally(() => {
+                setLoading(false);
             })
     }
 
@@ -33,10 +41,14 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(e => {
                 console.log(e);
                 setError(e.message);
+            })
+            .finally(() => {
+                setLoading(false);
             })
     }
 
@@ -52,10 +64,14 @@ const Login = () => {
                 console.log(user);
                 setError('');
                 form.reset();
-                toast.success('Thanks for your access')
+                toast.success('Thanks for your access');
+                navigate(from, { replace: true });
             })
             .catch(e => {
                 setError(e.message)
+            })
+            .finally(() => {
+                setLoading(false);
             })
 
     }

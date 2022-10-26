@@ -1,11 +1,22 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import image from "../assets/favicon.png";
+import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 import './Navbar.css'
 
 const Navbar = () => {
+
     const [darkMode, setDarkMode] = useState(false);
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
         <div className={darkMode ? 'dark-mode' : "light-mode"}>
             <div className="navbar bg-primary text-primary-content">
@@ -27,14 +38,22 @@ const Navbar = () => {
                             </li>
                             <li><Link to='/blog'>Blog</Link></li>
                             <li><Link to='/faq'>FAQ</Link></li>
-                            <li><Link to='/login'>LogIn</Link></li>
-                            <li><Link to='/register'>Sign Up</Link></li>
-                            <li><Link to='/logout'>LogOut</Link></li>
-                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
-                                    <img src="https://placeimg.com/80/80/people" alt='' />
-                                </div>
-                            </label>
+                            <>
+                                {
+                                    user?.uid ?
+                                        <>
+                                            <li><Link onClick={handleLogOut}>LogOut</Link></li>
+                                            <div className="tooltip tooltip-right mt-1" data-tip={user.displayName}>
+                                                <img className='w-10 rounded-full border border-solid' src={user.photoURL} alt="" />
+                                            </div>
+                                        </>
+                                        :
+                                        <>
+                                            <li><Link to='/login'>LogIn</Link></li>
+                                            <li><Link to='/register'>Sign Up</Link></li>
+                                        </>
+                                }
+                            </>
                         </ul>
                     </div>
 
@@ -51,14 +70,24 @@ const Navbar = () => {
                         </li>
                         <li><Link to='/blog'>Blog</Link></li>
                         <li><Link to='/faq'>FAQ</Link></li>
-                        <li><Link to='/login'>LogIn</Link></li>
-                        <li><Link to='/register'>Sign Up</Link></li>
-                        <li><Link to='/logout'>LogOut</Link></li>
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="https://placeimg.com/80/80/people" alt='' />
-                            </div>
-                        </label>
+                        <>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <li><Link onClick={handleLogOut}>LogOut</Link></li>
+                                        <div className="tooltip tooltip-right mt-1" data-tip={user.displayName}>
+                                            <img className='w-10 border border-solid rounded-full' src={user.photoURL} alt="" />
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+                                        <li><Link to='/login'>LogIn</Link></li>
+                                        <li><Link to='/register'>Sign Up</Link></li>
+                                    </>
+                            }
+                        </>
+
+
                     </ul>
                 </div>
 

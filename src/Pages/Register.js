@@ -8,7 +8,7 @@ import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
     const [error, setError] = useState('');
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -25,6 +25,7 @@ const Register = () => {
                 setError('');
                 toast.success('Account created Successfully')
                 console.log(user);
+                handleUpdateProfile(name, photoURL);
             })
             .catch(e => {
                 console.error(e);
@@ -32,6 +33,17 @@ const Register = () => {
 
             })
     }
+
+    const handleUpdateProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(e => console.error(e))
+    }
+
     return (
         <div className='w-full h-screen bg-no-repeat bg-cover bg-fixed relative flex justify-center place-items-center '>
 
