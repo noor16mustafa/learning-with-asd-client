@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const Home = () => {
     return (
         <div>
@@ -20,6 +21,7 @@ const Home = () => {
                 <h1 className='text-5xl font-bold text-yellow-500 text-center mt-14'>About Us</h1>
                 <p className='text-lg'>We design our courses for special children which are different from other child. They need special care and someone who can understand them.They can earn knowledge more effectively then normal child because of their sharp thinking.But the ability is differ in different case.  </p>
             </div>
+
 
         </div>
     );

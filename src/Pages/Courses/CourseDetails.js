@@ -30,12 +30,8 @@ const CourseDetails = () => {
                 <figure className="px-20 pt-6">
                     <img src={img} alt="" className="rounded-xl w-full" />
                 </figure>
-                <div id='content' style={{
-                    width: '700px',
-
-                    marginLeft: 'auto',
-                    marginRight: 'auto'
-                }} className="card-body items-center text-center">
+                <div id='content'
+                    className="card-body items-center text-center">
 
                     <p className='text-lg'>{details}</p>
                     <div>
